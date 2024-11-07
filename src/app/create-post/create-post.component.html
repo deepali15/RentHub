@@ -1,0 +1,79 @@
+<form [formGroup]="postForm" (ngSubmit)="postListing()">
+  <h2>Choose your Apartment/Building</h2>
+  <div>
+    <label>Choose your Apartment/Building</label>
+    <select formControlName="buildingType">
+      <option value="">Select an option</option>
+      <option value="apartment">Apartment</option>
+      <option value="house">House</option>
+      <option value="condo">Condo</option>
+    </select>
+  </div>
+  <div>
+    <label>Enter the name of your building</label>
+    <input type="text" formControlName="buildingName" />
+  </div>
+
+  <h3>Is this a shared property?</h3>
+  <label><input type="radio" formControlName="sharedProperty" value="Yes" /> Yes</label>
+  <label><input type="radio" formControlName="sharedProperty" value="No" /> No</label>
+
+  <h3>Property Location</h3>
+  <div>
+    <label>Street Address</label>
+    <input type="text" formControlName="streetAddress" />
+  </div>
+
+  <h3>Property Details</h3>
+  <div>
+    <label>Square Feet</label>
+    <input type="number" formControlName="squareFeet" placeholder="Enter area in square feet" />
+  </div>
+  <div>
+    <label>Stay / Lease Type</label>
+    <label><input type="radio" formControlName="leaseType" value="Long term" /> Long term (6+ months)</label>
+    <label><input type="radio" formControlName="leaseType" value="Short term" /> Short term</label>
+    <label><input type="radio" formControlName="leaseType" value="Both" /> Both</label>
+  </div>
+
+  <h3>Expected Rent</h3>
+  <div>
+    <label>Expected Rent</label>
+    <input type="number" formControlName="expectedRent" placeholder="Enter expected rent" />
+  </div>
+  <div>
+    <label><input type="checkbox" formControlName="negotiable" /> Negotiable</label>
+  </div>
+  <div>
+    <label>Price Mode</label>
+    <label><input type="radio" formControlName="priceMode" value="Per Month" /> Per Month</label>
+    <label><input type="radio" formControlName="priceMode" value="Utilities included" /> Utilities included in
+      rent</label>
+  </div>
+
+  <h3>Is the room/apartment furnished?</h3>
+  <label><input type="radio" formControlName="furnished" value="Yes" /> Yes</label>
+  <label><input type="radio" formControlName="furnished" value="No" /> No</label>
+
+  <h3>Amenities Included</h3>
+  <div formArrayName="amenities">
+    <label>Amenities:</label>
+    <div *ngFor="let amenityControl of amenities.controls; let i = index">
+      <label>
+        <input type="checkbox" [formControlName]="i"> {{ amenitiesList[i] }}
+      </label>
+    </div>
+  </div>
+  <h3>Description</h3>
+  <div>
+    <label>Title</label>
+    <input type="text" formControlName="title" placeholder="Enter your AD title" />
+  </div>
+  <div>
+    <label>Description</label>
+    <textarea formControlName="description" rows="5"
+      placeholder="Enter a detailed description within 1400 characters"></textarea>
+  </div>
+
+  <button type="submit">Submit Listing</button>
+</form>

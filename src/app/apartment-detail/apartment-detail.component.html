@@ -1,0 +1,49 @@
+<div *ngIf="apartment">
+  <div class="apartment-detail">
+    <img [src]="apartment.image"  class="apartment-image" />
+    <div class="apartment-info">
+      <h2>{{ apartment.title }}</h2>
+      <p class="description"> {{ apartment.description }}</p>
+      <p><strong>Building Type:</strong> {{ apartment.buildingType }}</p>
+      <p><strong>Building Name:</strong> {{ apartment.buildingName }}</p>
+      <p><strong>Address:</strong> {{ apartment.streetAddress }}</p>
+      <p><strong>Square Feet:</strong> {{ apartment.squareFeet }} sq. ft.</p>
+      <p><strong>Lease Type:</strong> {{ apartment.leaseType }}</p>
+  
+      <p><strong>Expected Rent:</strong> Rs. {{ apartment.expectedRent }}</p>
+      <p><strong>Negotiable:</strong> {{ apartment.negotiable ? 'Yes' : 'No' }}</p>
+      <p><strong>Price Mode:</strong> {{apartment.priceMode}}</p>
+      <p><strong>Furnished:</strong> {{ apartment.furnished ? 'Yes' : 'No' }}</p>
+      <p><strong>Location:</strong> {{ apartment.streetAddress }}</p>
+      <!-- <div class="amenities"> 
+        <h3>Amenities</h3>
+        <ul>
+          <li *ngIf="apartment.amenities.gym">Gym</li>
+          <li *ngIf="apartment.amenities.swimmingPool">Swimming Pool</li>
+          <li *ngIf="apartment.amenities.carPark">Car Park</li>
+          <li *ngIf="apartment.amenities.visitorsParking">Visitors Parking</li>
+          <li *ngIf="apartment.amenities.powerBackup">Power Backup</li>
+          <li *ngIf="apartment.amenities.garbageDisposal">Garbage Disposal</li>
+          <li *ngIf="apartment.amenities.privateLawn">Private Lawn</li>
+          <li *ngIf="apartment.amenities.waterHeater">Water Heater</li>
+          <li *ngIf="apartment.amenities.securitySystem">Security System</li>
+          <li *ngIf="apartment.amenities.laundryService">Laundry Service</li>
+          <li *ngIf="apartment.amenities.elevator">Elevator</li>
+          <li *ngIf="apartment.amenities.clubHouse">Club House</li>
+        </ul>
+      </div> -->
+      <div class="amenities"> 
+        <h3>Amenities</h3>
+        <ul *ngIf="apartment?.amenities">
+          <ng-container *ngFor="let amenity of getAmenities()">
+            <li>{{ amenity }}</li>
+          </ng-container>
+        </ul>
+        <p *ngIf="getAmenities().length === 0">No amenities available</p>
+      </div>
+    </div>
+  </div>
+  </div>
+  <button class="btn" (click)="backHome()">
+    View All
+  </button>

@@ -1,0 +1,46 @@
+.container {
+    padding: 20px;
+  }
+  
+  .card {
+    height: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .apartment-details p {
+    margin-bottom: 0.5rem;
+  }
+  
+  .amenities ul {
+    padding-left: 0;
+  }
+  
+  .amenities li {
+    display: inline-block;
+    margin-right: 10px;
+    background-color: #f8f9fa;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+  }
+  
+  .no-apartments {
+    text-align: center;
+    padding: 50px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .btn-primary {
+    width: 100%;
+  }

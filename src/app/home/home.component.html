@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>Available Apartments</h2>
+  <button class="btn btn-primary mt-2" (click)=createPost()>
+    Create Post
+  </button>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let apartment of apartments$ | async">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{apartment.buildingName}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{apartment.location}}</h6>
+
+          <div class="apartment-details">
+            <p><strong>Price:</strong> Rs. {{apartment.expectedRent}}
+              <span *ngIf="apartment.negotiable">(Negotiable)</span>
+            </p>
+            <p><strong>Building Type:</strong> {{apartment.buildingType}}</p>
+            <p><strong>Size:</strong> {{apartment.squareFeet}} sq ft</p>
+            <p><strong>Lease Type:</strong> {{apartment.leaseType}} </p>
+            <p><strong>Furnished:</strong> {{apartment.furnished ? 'Yes' : 'No'}}</p>
+          </div>
+          <button class="btn" (click)="viewDetails(apartment.id)">
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
