@@ -17,20 +17,20 @@ export class LoginComponent {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
   });
-  constructor(private authService: AuthService, private routerr: Router) {}
+  constructor(private authService: AuthService, private routerr: Router) { }
 
   router = inject(Router);
 
   onLogin() {
     if (this.userForm.valid) {
       const formValue = this.userForm.value;
-    
+
       // Get stored user details from localStorage
       const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-      
+
       // Find user with matching credentials
-      const user = registeredUsers.find((u: any) => 
-        u.username === formValue.username && 
+      const user = registeredUsers.find((u: any) =>
+        u.username === formValue.username &&
         u.password === formValue.password
       );
       if (user) {
@@ -38,7 +38,7 @@ export class LoginComponent {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.authService.login('userToken');
         this.router.navigate(['/home']);
-    
+
       } else {
         alert('Invalid username or password');
       }

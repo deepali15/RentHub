@@ -1,10 +1,19 @@
 <div class="container">
   <h2>Available Apartments</h2>
-  <button class="btn btn-primary mt-2" (click)=createPost()>
+  <div class="form-group">
+    <label for="search">Search:</label>
+    <input type="text" id="search" [(ngModel)]="searchTerm" (input)="filterApartments()" class="form-control" placeholder="Search by building name or location">
+  </div>
+  <button class="btn btn-primary mt-2" *ngIf="isLoggedIn()" (click)="createPost()" >
     Create Post
   </button>
+  <button class="btn" (click)=loginRedirect()>
+    login
+  </button>
   <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let apartment of apartments$ | async">
+    <!-- <div class="col-md-4 mb-4" *ngFor="let apartment of apartments$ | async"> -->
+      <div class="col-md-4 mb-4" *ngFor="let apartment of filteredApartments">
+  
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">{{apartment.buildingName}}</h5>
